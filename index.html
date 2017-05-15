@@ -1,1 +1,131 @@
-<h1>Teste</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Heatmaps</title>
+        <style>
+            /* Always set the map height explicitly to define the size of the div
+             * element that contains the map. */
+            #map {
+                height: 100%;
+            }
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #floating-panel {
+                position: absolute;
+                top: 20%;
+                left: 0%;
+                z-index: 5;
+            }
+            .buttonAbout{
+                position: absolute;
+                top: 130%;
+                left: 0%;
+                z-index: 5;
+            }
+
+            .popup {
+                width:100%;
+                height:100%;
+                display:none;
+                position:fixed;
+                top:0px;
+                left:0px;
+                background:rgba(0,0,0,0.75);
+            }
+
+            /* Inner */
+            .popup-inner {
+                max-width:700px;
+                width:90%;
+                padding:40px;
+                position:absolute;
+                top:50%;
+                left:50%;
+                -webkit-transform:translate(-50%, -50%);
+                transform:translate(-50%, -50%);
+                box-shadow:0px 2px 6px rgba(0,0,0,1);
+                border-radius:3px;
+                background:#fff;
+            }
+
+            /* Close Button */
+            .popup-close {
+                width:30px;
+                height:30px;
+                padding-top:4px;
+                display:inline-block;
+                position:absolute;
+                top:0px;
+                right:0px;
+                transition:ease 0.25s all;
+                -webkit-transform:translate(50%, -50%);
+                transform:translate(50%, -50%);
+                border-radius:1000px;
+                background:rgba(0,0,0,0.8);
+                font-family:Arial, Sans-Serif;
+                font-size:20px;
+                text-align:center;
+                line-height:100%;
+                color:#fff;
+            }
+
+            .popup-close:hover {
+                -webkit-transform:translate(50%, -50%) rotate(180deg);
+                transform:translate(50%, -50%) rotate(180deg);
+                background:rgba(0,0,0,1);
+                text-decoration:none;
+            }
+
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div id="floating-panel">
+            <p><button onclick="womanOnClick()" title="Dangerous Places for Women" data-toggle="tooltip" data-placement="right" class="btn btn-md btn-link buttonWoman"><img src="https://s18.postimg.org/pfj2718zd/1494809072_Woman-15.png" width="50px" /></button></p>
+            <p>
+                <button onclick="housesOnClick()" title="Residence related crimes" data-toggle="tooltip" data-placement="right" class="btn btn-md btn-link buttonHouses"><img src="https://s30.postimg.org/h6nmuzt9t/1494809257_Home.png" width="50px" /></button>
+            </p>
+            <p>
+                <button onclick="touristsOnClick()" title="Dangerous Places for Tourists" data-toggle="tooltip" data-placement="right" class="btn btn-md btn-link buttonTourists"><img src="https://s24.postimg.org/du3nfpg05/1494809186_camera.png" width="50px" /></button>
+            </p>
+            <p>
+                <button onclick="carOnClick()" title="Cars related crimes" data-toggle="tooltip" data-placement="right" class="btn btn-md btn-link buttonCar"><img src="imgs/car.png" width="50px" /></button>
+            </p>
+
+            <p>
+                <button onclick="aboutOnClick()" title="About" data-toggle="tooltip" data-placement="right" data-popup-open="popup-1" class="btn btn-md btn-link buttonAbout"><img src="imgs/about.png" width="50px" /></button>
+            </p>
+
+
+        </div>
+        <div id="map"></div>
+
+        <script src='jsIndex.js'></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqRzDLzby487-n5IF9RL-69tGMvRzHkuw&libraries=visualization&callback=initMap">
+        </script>
+
+        <div class="popup" data-popup="popup-1">
+            <div class="popup-inner">
+                <h2>T3 Project.</h2>
+                <p>This project is part of the discipline IA369 and is suppose to show the dangerous regions filtered by group of San Francisco Crime Data available in <a href='https://www.kaggle.com/c/sf-crime'>Kaggle website</a>.</p>
+                <p>The filtering part follows the methodology proposed in the T2 project, that is available <a href='https://rpubs.com/alelopes/sf_crime_4tourists'>here</a>.</p>
+                <p>Author: Alexandre Lopes</p>    
+                <p><a data-popup-close="popup-1" href="#">Close</a></p>
+                <a class="popup-close" data-popup-close="popup-1" href="#">x</a>
+            </div>
+        </div>
+
+
+    </body>
+</html>
+
+
